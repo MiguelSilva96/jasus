@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1(class="text-center")= title
+    i(class="fa fa-link", style="margin-left: 5px")
+  h6(class="text-center") Just another simple url shortner
+  div(class="grid center")
+      br
+      div(class="form-group row")
+        div(class="col-sm-12")
+          input(type="text" class="form-control " id="url" placeholder="Please enter the url")
+      div(class="row")
+        div(class="col-sm-12")
+          button(class="btn my-primary text-center") Shorten
+      div(class="row")
+        div(id="url-result") 
