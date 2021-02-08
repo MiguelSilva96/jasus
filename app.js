@@ -5,9 +5,19 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var urlsRouter = require('./routes/urls');
+var urlsController = require('./routes/urls');
+
+const mongo = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017/';
 
 var app = express();
+
+mongo.connect(url, { promiseLibrary: Promise, useUnifiedTopology: true }, (err, db) => {
+  if (err) {
+    logger.warn(`Failed to connect to the database. ${err.stack}`);
+  }
+  app.locals.db = db.db("jasus");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/urls', urlsRouter);
+app.use('/urls', urlsController);
 
 
 // catch 404 and forward to error handler

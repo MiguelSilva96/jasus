@@ -6,11 +6,12 @@ block content
   h6(class="text-center") Just another simple url shortner
   div(class="grid center")
       br
-      div(class="form-group row")
-        div(class="col-sm-12")
-          input(type="text" class="form-control " id="url" placeholder="Please enter the url")
+      form(method='POST' action='/urls')
+        div(class="form-group row")
+          div(class="col-sm-12")
+            input(type="text" name="url" class="form-control" id="url" placeholder="Please enter the url")
+        div(class="row")
+          div(class="col-sm-12")
+            button(class="btn my-primary text-center" action="submit") Shorten
       div(class="row")
-        div(class="col-sm-12")
-          button(class="btn my-primary text-center") Shorten
-      div(class="row")
-        div(id="url-result") 
+        urlId= urlId
