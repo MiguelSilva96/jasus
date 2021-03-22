@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var urlsController = require('./routes/urls');
 
 const mongo = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/';
+const url = 'mongo_db_url';
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/urls', urlsController);
+app.use('/', urlsController);
 
 
 // catch 404 and forward to error handler

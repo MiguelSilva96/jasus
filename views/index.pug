@@ -5,13 +5,28 @@ block content
     i(class="fa fa-link", style="margin-left: 5px")
   h6(class="text-center") Just another simple url shortner
   div(class="grid center")
-      br
-      form(method='POST' action='/urls')
-        div(class="form-group row")
-          div(class="col-sm-12")
-            input(type="text" name="url" class="form-control" id="url" placeholder="Please enter the url")
-        div(class="row")
-          div(class="col-sm-12")
-            button(class="btn my-primary text-center" action="submit") Shorten
+    br
+    form(method='POST' action='/urls')
+      div(class="form-group row")
+        div(class="col-sm-12")
+          input(type="text" name="url" class="form-control" id="url" placeholder="Please enter the url")
       div(class="row")
-        urlId= urlId
+        div(class="col-sm-12")
+          button(class="btn my-primary text-center" action="submit") Shorten
+    if urlId
+      br
+      div(class="row" class="pt-1")
+        div(class="col-sm-8")
+          i(class="fa fa-lg fa-check-circle" style="color: green") 
+          span(style="color: #000; font-weight: 600;" class="ml-1") Success! That was cool, jasus!!
+          a(href=`${urlId}`) 
+            span(id="urlRef") #{origin}/#{urlId}
+        div(class="col-sm-4")
+          button(class="btn primary" onclick="copyUrl()" style="float:right")
+            i(class="fa fa-copy")
+  div(class="toast custom-toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000")
+    div(class="toast-header custom-header") 
+      i(class="fa fa-copy rounded mr-2")
+      strong(class="mr-auto") Link copied to the clipboard
+      button(type="button", class="ml-2 mb-1 close", data-dismiss="toast", aria-label="Close")
+        span(aria-hidden="true") &times;
